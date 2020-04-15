@@ -1,0 +1,35 @@
+This is the preferred tool chain list to build and continue the development of 
+the microCore project. 
+
+ Tool Name					Version		 							Download link
+ ----------------------------------------------------------------------------------
+* Eclipse			-		Oxygen.3a Release (4.7.3a)		-		www.eclipse.org
+* MiKTeX			-		2.9.7031						-		www.miktex.org
+* mingw32-gcc		-		6.3.0-1							-		https://osdn.net/projects/mingw/releases/
+* Doxygen			-		1.8.15							-		http://doxygen.nl/
+* UMLet				-		14.3							-		www.umlet.com
+
+
+In the repository there exists a eclipse .project file with all dependency and setup parameters for quick compile.
+
+- Eclipse
+	
+	Eclipse is used for ease of development as a IDE. In the repository there is a .project file and a .cproject file
+	for the CDT plug-in in eclipse. These files can be used to import the project into eclipse and start development directly
+	no need for further setup.
+
+- MikTex
+	
+	MikTex is used to compile the software documentation that is written in LaTex.
+
+- MinGW32
+
+	MinGW32 is contains the gcc compiler and linker use for compiling and testing of the software on a x86 machine.
+
+- Doxygen
+	
+	Doxygen is used to automatically generate documentation from the code and it's comment blocks.
+
+- UMLet
+	
+	UMLet is used to draw pictures and diagrams for the documentation, it is a vector graphic tool.

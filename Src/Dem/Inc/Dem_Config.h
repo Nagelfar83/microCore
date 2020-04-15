@@ -22,12 +22,14 @@
  *
  *  The last entry of the enum gives the number of events in the list.
  */
-typedef enum
+enum demEvents
 {
   EXAMPLE_EVENT_1,
   EXAMPLE_EVENT_2,
+  EXAMPLE_EVENT_3,
+  EXAMPLE_EVENT_4,
   NUMBER_OF_EVENTS
-} Dem_eventID;
+};
 
 
 /*! \def MAX_NUMBER_OF_EVENTS
@@ -36,21 +38,46 @@ typedef enum
  *  Defines the max number of events that the DEM can handle and is configured for.
  *  Max number of events that can be configured is 256.
  */
-#define MAX_NUMBER_OF_EVENTS 10
+#define MAX_NUMBER_OF_EVENTS 100
 
+/*! \def ERROR_MEMORY_SIZE
+ *  \brief Size of the error memory
+ *
+ *  Defines the size of the error memory i.e. the number of errors that can be
+ *  in total. If the error memory is full all new errors will be discarded.
+ */
+#define ERROR_MEMORY_SIZE 10
 
-Dem_eventType eventList[MAX_NUMBER_OF_EVENTS] = {
+Dem_Event_Type errorMemory[ERROR_MEMORY_SIZE];
+
+Dem_Event_Type eventList[MAX_NUMBER_OF_EVENTS] = {
     {
-        .eventID = 0xFFFF,
-        .debounceCounter = 0x10,
-        .failedLvl = 128,
-        .passedLvl = 256
+        .eventID = EXAMPLE_EVENT_1,
+        .debounceCounter = 10,
+        .failedLvl = 127,
+        .passedLvl = -128,
+        .statusBits = INIT_BIT
     },
     {
-        .eventID = 0xFFEE,
-        .debounceCounter = 0x10,
-        .failedLvl = 128,
-        .passedLvl = 256
+        .eventID = EXAMPLE_EVENT_2,
+        .debounceCounter = 10,
+        .failedLvl = 127,
+        .passedLvl = -128,
+        .statusBits = INIT_BIT
+    },
+    {
+        .eventID = EXAMPLE_EVENT_3,
+        .debounceCounter = 20,
+        .failedLvl = 127,
+        .passedLvl = -128,
+        .statusBits = INIT_BIT
+    },
+    {
+        .eventID = EXAMPLE_EVENT_4,
+        .debounceCounter = 30,
+        .failedLvl = 127,
+        .passedLvl = -128,
+        .statusBits = INIT_BIT
     }
 };
 

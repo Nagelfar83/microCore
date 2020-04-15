@@ -11,20 +11,39 @@
 
 #include "Std_Types.h"
 
-typedef uint16 eventID_Type;
+//#define EMPTY 255
+#define DEBOUNCE_INIT 0
+
+typedef uint16 Dem_EventID_Type;
+typedef sint16 Dem_DebounceCounter_Type;
+typedef sint16 Dem_FailedPassedLvl_Type;
 
 /*! \enum status
  *  \brief DEM event status
  *
  *  The different status that a DEM event can have.
  */
-enum status
+typedef enum demEventStatus
 {
   PRE_FAILED, /*!< Indicates that an event has failed */
   PRE_PASSED, /*!< Indicates that an event has recovered*/
   FAILED,     /*!< Indicates that an event has reach its failed limit*/
   PASSED      /*!< Indicates that an event has reached its healing limit*/
-};
+} Dem_EventStatus_Type; //update code I added _Type
+
+/*! \enum status bits
+ *  \brief DEM event status bits
+ *
+ *  The different status bit that a event can have.
+ */
+typedef enum demStatusBits
+{
+  INIT_BIT = 0,
+  PENDING_BIT = 1,
+  PASSED_BIT = 2,
+  FAILED_BIT = 4,
+  CONFIRMED_BIT = 8
+} Dem_StatusBits_Type;
 
 /*! \struct Dem_eventType
  *  \brief DEM Event
@@ -34,10 +53,11 @@ enum status
  */
 typedef struct
 {
-  eventID_Type eventID;   /*!< The events unique ID*/
-  uint16 debounceCounter; /*!< The debounce counter for the event*/
-  uint16 failedLvl;       /*!< The configurable failed limit for the event*/
-  uint16 passedLvl;       /*!< The configurable passed limit for the event*/
-} Dem_eventType;
+  Dem_EventID_Type eventID;                   /*!< The events unique ID*/
+  Dem_DebounceCounter_Type debounceCounter;   /*!< The debounce counter for the event*/
+  Dem_FailedPassedLvl_Type failedLvl;         /*!< The configurable failed limit for the event*/
+  Dem_FailedPassedLvl_Type passedLvl;         /*!< The configurable passed limit for the event*/
+  Dem_StatusBits_Type statusBits;             /*!< The current status bits of the event */
+} Dem_Event_Type;
 
 #endif /* SRC_DEM_INC_DEM_TYPES_H_ */

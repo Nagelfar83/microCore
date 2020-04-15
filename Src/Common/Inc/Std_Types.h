@@ -23,6 +23,6 @@ typedef int32_t sint32;
 #define E_NOT_OK 0x01
 
 
-typedef uint8 Std_ReturnType;
+typedef uint8 Std_Return_Type;
 
 #endif /* SRC_COMMON_INC_STD_TYPES_H_ */
